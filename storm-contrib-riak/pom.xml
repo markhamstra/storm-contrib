@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>storm-contrib</artifactId>
+    <groupId>storm</groupId>
+    <version>0.1-SNAPSHOT</version>
+    <relativePath>..</relativePath>
+  </parent>
+  <artifactId>storm-contrib-riak</artifactId>
+  <packaging>jar</packaging>
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  <name>storm-contrib-riak</name>
+  <description>Components for Storm integration with Riak</description>
+  <repositories>
+        <repository>
+            <id>github-releases</id>
+            <url>http://oss.sonatype.org/content/repositories/github-releases/</url>
+        </repository>
+    </repositories>
+  <dependencies>
+    <dependency>
+        <groupId>storm</groupId>
+        <artifactId>storm</artifactId>
+        <version>0.7.1</version>
+        <!-- keep storm out of the jar-with-dependencies -->
+        <scope>provided</scope>
+    </dependency>
+  	<dependency>
+  		<groupId>com.basho.riak</groupId>
+  		<artifactId>riak-client</artifactId>
+  		<version>1.0.5</version>
+  	</dependency>
+  </dependencies>
+  <build>
+    <plugins>
+        <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass></mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+            </plugin>
+      
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <encoding>UTF-8</encoding>
+                <source>6</source>
+                <target>6</target>
+            </configuration>
+        </plugin>
+    </plugins>
+  </build>
+</project>
